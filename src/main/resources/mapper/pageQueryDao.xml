@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper  namespace="com.dc.dao.PageQueryDao">
+
+
+    <!--分页查询-->
+
+    <select id="getOnePagenoteData" resultType="com.dc.pojo.User1">
+        SELECT * FROM user
+       <!--   <where>
+            <if test="dname!= null and dname!=''">
+                AND dname LIKE  '%' #{dname} '%'
+            </if>
+            <if test="startdate!= null and startdate!=''">
+                AND dentrytime&gt;=#{startdate}
+            </if>
+            <if test="enddate!= null and enddate!=''">
+                AND dentrytime&lt;=#{enddate}
+            </if>
+        </where>-->
+    </select>
+
+
+</mapper>
