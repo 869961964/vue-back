@@ -32,8 +32,8 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
+			<!-- <scope>runtime</scope>
+			<optional>true</optional> -->
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
@@ -68,6 +68,11 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.2.3</version>
         </dependency>
+       	<!-- aop依赖 -->
+		<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
 		
 	</dependencies>
 
