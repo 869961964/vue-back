@@ -40,7 +40,7 @@ public class MenuServiceImpl implements MenuService {
 			menuListVO.setId(menu.getId());
 			menuListVO.setName(menu.getName());
 			menuListVO.setUrl(menu.getUrl());
-			
+			menuListVO.setImgurl(menu.getImgurl());
 			List<Menu> menuList1 = menuDao.findById(menu.getId());
 			
 			
@@ -60,6 +60,7 @@ public class MenuServiceImpl implements MenuService {
 			menuListVO.setId(menu.getId());
 			menuListVO.setName(menu.getName());
 			menuListVO.setUrl(menu.getUrl());
+			menuListVO.setImgurl(menu.getImgurl());
 			menuListVOList.add(menuListVO);
 		}
 		

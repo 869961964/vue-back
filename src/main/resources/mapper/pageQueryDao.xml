@@ -20,6 +20,11 @@
                 AND dentrytime&lt;=#{enddate}
             </if>
         </where>-->
+        <where>
+         <if test="username!= null and username!=''">
+                AND username LIKE  '%' #{username} '%'
+            </if>
+        </where>
     </select>
 
 

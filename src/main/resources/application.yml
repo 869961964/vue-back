@@ -14,7 +14,7 @@ spring:
         filters: stat
         driver-class-name: com.mysql.cj.jdbc.Driver
         #基本属性
-        url: jdbc:mysql://localhost:3306/rbac?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=GMT
+        url: jdbc:mysql://localhost:3306/vueback?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=GMT
         username: root
         password: 566409
         #配置初始化大小/最小/最大

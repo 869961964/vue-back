@@ -17,5 +17,6 @@ public class MenuListVO {
 	private String url;
 	
 	private List<MenuListVO> children;
-
+	 
+	private String imgurl;
 }
