@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper  namespace="com.dc.dao.WellDataDao">
+
+
+    <!--根据地图范围动态查询数据-->
+
+    <select id="getAllWellData" resultType="com.dc.pojo.WellData">
+        SELECT * FROM well_data
+       <!--   <where>
+            <if test="dname!= null and dname!=''">
+                AND dname LIKE  '%' #{dname} '%'
+            </if>
+            <if test="startdate!= null and startdate!=''">
+                AND dentrytime&gt;=#{startdate}
+            </if>
+            <if test="enddate!= null and enddate!=''">
+                AND dentrytime&lt;=#{enddate}
+            </if>
+        </where>-->
+        <where>
+        lng between #{param1} and #{param2} and lat between #{param3} and #{param4}
+        </where>
+    </select>
+    
+    <!--获取分页井盖数据  -->  
+    <select id="getListWellData" resultType="com.dc.pojo.WellData">
+        SELECT * FROM well_data
+       <!--   <where>
+            <if test="dname!= null and dname!=''">
+                AND dname LIKE  '%' #{dname} '%'
+            </if>
+            <if test="startdate!= null and startdate!=''">
+                AND dentrytime&gt;=#{startdate}
+            </if>
+            <if test="enddate!= null and enddate!=''">
+                AND dentrytime&lt;=#{enddate}
+            </if>
+        </where>-->
+        <where>
+         <if test="areas!= null and areas!=''">
+                AND areas LIKE  '%' #{areas} '%' 
+            </if>
+            <if test="urban!= null and urban!=''">
+                AND urban LIKE  '%' #{urban} '%'
+            </if>
+            <if test="province!= null and province!=''">
+                AND province LIKE  '%' #{province} '%'
+            </if>
+        </where>
+    </select>
+   
+</mapper>

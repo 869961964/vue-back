@@ -18,4 +18,10 @@ public class UserQueryPageImpl implements UserQueryPage {
 		return pageQueryDao.getOnePagenoteData(map);
 	}
 
+	@Override
+	public int deleteUser(String username) {
+		
+		return pageQueryDao.deleteUser(username);
+	}
+
 }

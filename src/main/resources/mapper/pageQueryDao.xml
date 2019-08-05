@@ -22,10 +22,21 @@
         </where>-->
         <where>
          <if test="username!= null and username!=''">
-                AND username LIKE  '%' #{username} '%'
+                AND user_name LIKE  '%' #{username} '%'
             </if>
         </where>
     </select>
-
-
+   <delete id="deleteUser">
+    	delete from user 
+    	<where>
+    	username=#{username}
+    	</where>
+    </delete>  
+    
+    <insert id="addUser">
+        insert into user 
+        (user_name,pass_word,user_status,email,sex) 
+        values
+        (#{userName},#{passWord},#{userStatus},#{email},#{sex})
+    </insert>
 </mapper>
