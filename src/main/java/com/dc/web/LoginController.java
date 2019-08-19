@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dc.dao.vo.ResponseResult;
+import com.dc.exception.NoUserException;
 import com.dc.pojo.User;
 import com.dc.pojo.UserInfo;
 import com.dc.service.TokenService;
@@ -28,24 +30,30 @@ public class LoginController {
 	
 	@PostMapping(value="/login123")
 	@PassToken
-	public Map<String, String> login(@RequestBody UserInfo userInfo){
+	public ResponseResult<String> login(@RequestBody UserInfo userInfo){
 		System.out.println("username="+userInfo.getUsername());
 		log.info("username={},password={}",userInfo.getUsername(),userInfo.getPassword());
 		
 		User user = new User();
 		user.setLoginName(userInfo.getUsername());
 		user.setPassword(userInfo.getPassword());
-		
-		User user1 = userService.queryForLogin(user);
-		Map<String, String> map = new HashMap<>();
-		if(user1 != null) {
+		//Map<String, String> map = new HashMap<>();
+		ResponseResult<String> result;
+		try {
+			User user1 = userService.queryForLogin(user);
 			String token = tokenService.getToken(user1);
-			map.put("success", "true");
-			map.put("userName",user1.getLoginName());
-			map.put("token", token);
-			
+			result = new ResponseResult<String>("true",user1.getLoginName(),token);
+//			map.put("code", "true");
+//			map.put("userName",user1.getLoginName());
+//			map.put("token", token);
+//			
+		} catch (NoUserException e) {
+			result = new ResponseResult<String>("faile",e.getMessage(),"");
+//			map.put("code", e.getCode().toString());
+//			map.put("userName",e.getMessage());
+//			map.put("token", "");	
 		}
-		return map;
+		return result;
 	}
 
 }
